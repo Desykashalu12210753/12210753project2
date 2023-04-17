@@ -1,93 +1,66 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Dashbosrdview extends StatelessWidget {
-  const Dashbosrdview({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(FontAwesomeIcons.house), label: 'Beranda'),
-          BottomNavigationBarItem(
-              icon: Icon(FontAwesomeIcons.newspaper), label: 'Berita'),
-          BottomNavigationBarItem(
-              icon: Icon(FontAwesomeIcons.wrench), label: 'Pengaturan'),
-        ],
-      ),
-      body: Stack(
-        children: [
-          BackgroundDashboard(),
-          InformasiPengguna(),
-          SingleChildScrollView(
-              child: Padding(
-            padding: const EdgeInsets.only(top: 180),
-            child: Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(28),
-                        topRight: Radius.circular(20))),
-                margin: EdgeInsets.zero,
-                child: Container(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          'Berita',
-                          style: TextStyle(fontSize: 19),
-                        ),
-                        LabelBerita(),
-                        ListBerita(),
-                        SizedBox(
-                          height: 40,
-                        ),
-                        Wrap(
-                          children: [
-                            TombolMenu(
-                              gambar: 'assets/icon1.png',
-                            ),
-                            TombolMenu(
-                              gambar: 'assets/icon2.png',
-                            ),
-                            TombolMenu(
-                              gambar: 'assets/icon3.png',
-                            ),
-                            TombolMenu(
-                              gambar: 'assets/icon4.png',
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                )),
-          )),
-        ],
-      ),
-    );
-  }
-}
-
-class BackgroundDashboard extends StatelessWidget {
-  const BackgroundDashboard({
+class BerandaPanel extends StatelessWidget {
+  const BerandaPanel({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      'assets/background.png',
-      height: 300,
-      width: double.infinity,
-      fit: BoxFit.cover,
+    return Stack(
+      children: [
+        BackgroundDashboard(),
+        InformasiPengguna(),
+        SingleChildScrollView(
+            child: Padding(
+          padding: const EdgeInsets.only(top: 180),
+          child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(28),
+                      topRight: Radius.circular(20))),
+              margin: EdgeInsets.zero,
+              child: Container(
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Berita',
+                        style: TextStyle(fontSize: 19),
+                      ),
+                      LabelBerita(),
+                      ListBerita(),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Wrap(
+                        children: [
+                          TombolMenu(
+                            gambar: 'assets/icon1.png',
+                          ),
+                          TombolMenu(
+                            gambar: 'assets/icon2.png',
+                          ),
+                          TombolMenu(
+                            gambar: 'assets/icon3.png',
+                          ),
+                          TombolMenu(
+                            gambar: 'assets/icon4.png',
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              )),
+        )),
+      ],
     );
   }
 }
@@ -176,26 +149,6 @@ class LabelBerita extends StatelessWidget {
   }
 }
 
-class NavigatorBawah extends StatelessWidget {
-  const NavigatorBawah({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      items: [
-        BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.house), label: 'Home'),
-        BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.newspaper), label: 'Berita'),
-        BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.gear), label: 'Pengaturan')
-      ],
-    );
-  }
-}
-
 class InformasiPengguna extends StatelessWidget {
   const InformasiPengguna({
     super.key,
@@ -247,6 +200,22 @@ class InformasiPengguna extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class BackgroundDashboard extends StatelessWidget {
+  const BackgroundDashboard({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      'assets/background.png',
+      height: 300,
+      width: double.infinity,
+      fit: BoxFit.cover,
     );
   }
 }
